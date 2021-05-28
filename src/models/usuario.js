@@ -11,26 +11,30 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Usuario.hasMany(models.Cliente, {
-        foreignKey: "idUsuario",
+      Usuario.hasMany(models.Contrato, {
+        foreignKey: "idUsuarioCliente",
         sourceKey: "id"
       })
-      Usuario.hasMany(models.Profissional, {
-        foreignKey: "idUsuario",
+      Usuario.hasMany(models.Contrato, {
+        foreignKey: "idUsuarioProfissional",
         sourceKey: "id"
       })
       Usuario.hasMany(models.Mensagem, {
         foreignKey: "idUsuarioOrigem",
-        sourceKey: "id"
+        sourceKey:  "id"
       })
       Usuario.hasMany(models.Mensagem, {
         foreignKey: "idUsuarioDestino",
+        sourceKey:  "id"
+      })
+      Usuario.hasMany(models.Dependente, {
+        foreignKey: "idUsuario",
         sourceKey: "id"
       })
     }
   };
   Usuario.init({
-    tipo: DataTypes.STRING,
+    tipo: DataTypes.INTEGER,
     nome: DataTypes.STRING,
     email: DataTypes.STRING,
     senha: DataTypes.STRING,
@@ -44,7 +48,9 @@ module.exports = (sequelize, DataTypes) => {
     cep: DataTypes.STRING,
     cidade: DataTypes.STRING,
     estado: DataTypes.STRING,
-    telefone: DataTypes.STRING
+    telefone: DataTypes.STRING,
+    especializacao: DataTypes.STRING,
+    observacoes: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Usuario',

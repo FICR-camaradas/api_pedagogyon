@@ -4,12 +4,12 @@ module.exports = {
     await queryInterface.createTable('Usuarios', {
       id: {
         allowNull: false,
-        autoIncrement: false,
+        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       tipo: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       nome: {
         type: Sequelize.STRING
@@ -52,6 +52,12 @@ module.exports = {
       },
       telefone: {
         type: Sequelize.STRING
+      },
+      especializacao: {
+        type: Sequelize.STRING
+      },
+      observacoes: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

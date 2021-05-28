@@ -10,7 +10,7 @@ module.exports = {
       },
       idUsuarioOrigem: {
         field: "idUsuarioOrigem",
-        allowNull: false,
+        allowNull:false,
         type: Sequelize.INTEGER,
         references: {
           model: "Usuarios",
@@ -19,7 +19,7 @@ module.exports = {
       },
       idUsuarioDestino: {
         field: "idUsuarioDestino",
-        allowNull: false,
+        allowNull:false,
         type: Sequelize.INTEGER,
         references: {
           model: "Usuarios",

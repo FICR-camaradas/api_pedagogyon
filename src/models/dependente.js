@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Dependente.belongsTo(models.Cliente, {
-        foreignKey: "idCliente",
+      Dependente.belongsTo(models.Usuario, {
+        foreignKey: "idUsuario",
         targetKey: "id"
       })
       Dependente.hasMany(models.Contrato, {
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     data_nasc: DataTypes.DATEONLY,
     sexo: DataTypes.STRING,
     observacoes: DataTypes.TEXT,
-    idCliente: DataTypes.INTEGER
+    idUsuario: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Dependente',

@@ -11,16 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Contrato.belongsTo(models.Cliente, {
-        foreignKey: "idCliente",
+      Contrato.belongsTo(models.Usuario, {
+        foreignKey: "idUsuarioCliente",
         targetKey: "id"
       })
-      Contrato.belongsTo(models.Dependente, {
+      Contrato.belongsTo(models.Usuario, {
         foreignKey: "idDependente",
         targetKey: "id"
       })
-      Contrato.belongsTo(models.Profissional, {
-        foreignKey: "idProfissional",
+      Contrato.belongsTo(models.Usuario, {
+        foreignKey: "idUsuarioProfissional",
         targetKey: "id"
       })
     }
@@ -30,9 +30,9 @@ module.exports = (sequelize, DataTypes) => {
     descricao: DataTypes.TEXT,
     avalicao: DataTypes.FLOAT,
     comentario: DataTypes.TEXT,
-    idCliente: DataTypes.INTEGER,
+    idUsuarioCliente: DataTypes.INTEGER,
     idDependente: DataTypes.INTEGER,
-    idProfissional: DataTypes.INTEGER
+    idUsuarioProfissional: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Contrato',

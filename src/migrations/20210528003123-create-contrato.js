@@ -20,30 +20,30 @@ module.exports = {
       comentario: {
         type: Sequelize.TEXT
       },
-      idCliente: {
-        field: "idCliente",
-        allowNull: false,
+      idUsuarioCliente: {
+        field: "idUsuarioCliente",
+        allowNull:false,
         type: Sequelize.INTEGER,
         references: {
-          model: "Clientes",
+          model: "Usuarios",
           key: "id"
         }
       },
       idDependente: {
         field: "idDependente",
-        allowNull: false,
+        allowNull:false,
         type: Sequelize.INTEGER,
         references: {
           model: "Dependentes",
           key: "id"
         }
       },
-      idProfessional: {
-        field: "idProfissional",
-        allowNull: false,
+      idUsuarioProfissional: {
+        field: "idUsuarioProfissional",
+        allowNull:false,
         type: Sequelize.INTEGER,
         references: {
-          model: "Profissionals",
+          model: "Usuarios",
           key: "id"
         }
       },
