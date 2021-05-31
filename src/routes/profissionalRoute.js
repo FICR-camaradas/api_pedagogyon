@@ -7,4 +7,6 @@ module.exports = function (app) {
     
     app.route('/profissional/:id')
         .get(profissionalController.listOne)
+        .put(profissionalController.updateOne)
+        .delete(profissionalController.deleteOne)
 }

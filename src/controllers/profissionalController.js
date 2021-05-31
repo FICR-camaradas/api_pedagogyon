@@ -34,3 +34,27 @@ exports.createOne = (req, res) => {
         .catch(error => {res.send(error)})
     })
 }
+exports.updateOne = (req,res) => {
+  const {
+    nome, email, imagem,
+    cpf, rg, orgao_expedidor,
+    data_nasc, sexo, endereco,
+    cep, cidade, estado, telefone,
+    especializacao,observacoes
+  } = req.body
+  Profissional.update({
+    nome, email, imagem,
+    cpf, rg, orgao_expedidor,
+    data_nasc, sexo, endereco,
+    cep, cidade, estado, telefone,
+    especializacao,observacoes
+  },{where:{id:req.params.id}})
+.then(profissional => {res.send(profissional)})
+.catch(error => {res.send(error)})
+}
+
+exports.deleteOne = (req,res) => {
+Profissional.destroy({where:{id:req.params.id}})
+.then(profissional => {res.send(profissional)})
+.catch(error => {res.send(error)})
+}

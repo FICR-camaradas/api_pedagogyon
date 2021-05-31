@@ -6,4 +6,6 @@ module.exports = function (app) {
     
     app.route('/cliente/:id')
         .get(clienteController.listOne)
+        .put(clienteController.updateOne)
+        .delete(clienteController.deleteOne)
 }

@@ -53,4 +53,6 @@ exports.updateOne = (req,res) => {
 
 exports.deleteOne = (req,res) => {
 	Cliente.destroy({where:{id:req.params.id}})
+  .then(cliente => {res.send(cliente)})
+	.catch(error => {res.send(error)})
 }
