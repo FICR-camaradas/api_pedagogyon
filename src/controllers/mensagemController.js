@@ -1,41 +1,33 @@
+const Mensagem = require('../models').Mensagem
+const Usuario = require('../models').Usuario
+const {Op} = require('sequelize')
+
 exports.listAll = (req, res) => {
-    let response = {
-        message: 'Usuário criado com sucesso'
-      }
-      res.send(response) 
+    Mensagem.findAll()
+    .then(mensagens => {return res.status(200).send(mensagens)})
+    .catch(error => {return res.status(500).send(error)})
 }
 
 exports.listOne = (req, res) => { 
-    let response = {
-        message: 'Usuário criado com sucesso',
-        data: req.body,
-        id:req.params.id
-      }
-      res.send(response)
-    
+    Mensagem.findAll({where:{id:req.params.id}})
+    .then(mensagens => {return res.status(200).send(mensagens)})
+    .catch(error => {return res.status(500).send(error)})
 }
 
 exports.createOne = (req, res) => { 
-    let response = {
-        message: 'Usuário criado com sucesso',
-        data: req.body
-      }
-      res.send(response)
+    const {idUsuarioOrigem,idUsuarioDestino,mensagem} = req.body
+  	Usuario.findAll({where:{[Op.or]:[{id:idUsuarioOrigem}, {id:idUsuarioDestino}]}})
+	  .then(usuario => {
+		if(usuario.length == 2){
+			Mensagem.create({idUsuarioOrigem,idUsuarioDestino,mensagem})
+			.then(mensagem => {return res.status(201).send(mensagem)})
+	  }})
+	  .catch(error => {return res.status(500).send(error)})
 }
 
 exports.updateOne = (req, res) => { 
-    let response = {
-        message: 'Usuário criado com sucesso',
-        data: req.body,
-        id:req.params.id
-      }
-      res.send(response)
+    
 }
 exports.deleteOne = (req, res) => { 
-    let response = {
-        message: 'Usuário criado com sucesso',
-        data: req.body,
-        id:req.params.id
-      }
-      res.send(response)
+    
 }

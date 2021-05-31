@@ -4,9 +4,4 @@ module.exports = function (app) {
     app.route('/mensagem')
         .get(mensagemController.listAll)
         .post(mensagemController.createOne)
-
-    app.route('/mensagem/:id')
-        .get(mensagemController.listOne)
-        .put(mensagemController.updateOne)
-        .delete(mensagemController.deleteOne)
 }

@@ -7,6 +7,4 @@ module.exports = function (app) {
 
     app.route('/contrato/:id')
         .get(contratoController.listOne)
-        .put(contratoController.updateOne)
-        .delete(contratoController.deleteOne)
 }
