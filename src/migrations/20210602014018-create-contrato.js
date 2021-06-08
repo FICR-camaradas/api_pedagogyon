@@ -21,31 +21,13 @@ module.exports = {
         type: Sequelize.TEXT
       },
       idUsuarioCliente: {
-        field: "idUsuarioCliente",
-        allowNull:false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Usuarios",
-          key: "id"
-        }
+        type: Sequelize.INTEGER
       },
       idDependente: {
-        field: "idDependente",
-        allowNull:false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Dependentes",
-          key: "id"
-        }
+        type: Sequelize.INTEGER
       },
       idUsuarioProfissional: {
-        field: "idUsuarioProfissional",
-        allowNull:false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Usuarios",
-          key: "id"
-        }
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

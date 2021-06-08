@@ -35,23 +35,22 @@ exports.createOne = (req, res) => {
 						idDependente, idUsuarioProfissional
 					})
 					.then(contrato => {return res.status(201).send(contrato)})
-					.catch(error => {return res.status(500).send({mensagem:"Erro ao connsolidar contrato", error:error})})
-				}else{return res.status(500).send({mensagem: "Erro ao connsolidar contrato"})}
+					.catch(error => {return res.status(401).send({mensagem:"Erro ao consolidar contrato 5", error:error})})
+				}else{return res.status(401).send({mensagem: "Erro ao consolidar contrato 4"})}
 			})
-			.catch(error => {return res.status(500).send({mensagem:"Erro ao connsolidar contrato", error:error})})
+			.catch(error => {return res.status(401).send({mensagem:"Erro ao consolidar contrato 3", error:error})})
 		}
-		else{return res.status(500).send({mensagem: "Erro ao connsolidar contrato"})}
+		else{return res.status(401).send({mensagem: "Erro ao consolidar contrato 2"})}
 	})
-	.catch(error => {return res.status(500).send({mensagem:"Erro ao connsolidar contrato", error: error})})
+	.catch(error => {return res.send({mensagem:"Erro ao consolidar contrato 1", error: error})})
 
 }
 
 exports.updateOne = (req, res) => { 
-    /** Por motivos de segurança, os
-	 * contratos não devem receber
-	 * modificações após serem consolidados.
-	 * É recomendável a criação de um novo 
-	 * contrato */
+    const {avalicao, comentario} = req.body
+	Contrato.update({where:{id:req.params.id}})
+	.then(contrato => { return res.send(contrato)})
+	.catch(error => {return res.send(error)})
 }
 exports.deleteOne = (req, res) => { 
     /** Por motivos de segurança, os

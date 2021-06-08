@@ -9,22 +9,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idUsuarioOrigem: {
-        field: "idUsuarioOrigem",
-        allowNull:false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Usuarios",
-          key: "id"
-        }
+        type: Sequelize.INTEGER
       },
       idUsuarioDestino: {
-        field: "idUsuarioDestino",
-        allowNull:false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Usuarios",
-          key: "id"
-        }
+        type: Sequelize.INTEGER
       },
       mensagem: {
         type: Sequelize.TEXT

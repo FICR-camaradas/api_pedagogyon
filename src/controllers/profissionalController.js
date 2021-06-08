@@ -1,5 +1,6 @@
 const Profissional = require('../models').Usuario
 const bcrypt = require('bcrypt')
+const {uuid} = require('uuidv4')
 
 exports.listAll = (req, res) => {
     Profissional.findAll({where:{tipo:2}})
@@ -26,7 +27,8 @@ exports.createOne = (req, res) => {
     bcrypt.hash(req.body.senha, 10, (err,hash)=>{
       if(err){return res.send({err})}
       let senha = hash
-      Profissional.create({tipo,nome,email,senha,
+      Profissional.create({
+        uuid:uuid(),tipo,nome,email,senha,
         imagem,cpf,rg,orgao_expedidor,
         data_nasc,sexo,endereco,cep,cidade,
         estado,telefone,especializacao,observacoes})

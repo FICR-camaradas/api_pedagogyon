@@ -11,14 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Dependente.belongsTo(models.Usuario, {
-        foreignKey: "idUsuario",
-        targetKey: "id"
-      })
-      Dependente.hasMany(models.Contrato, {
-        foreignKey: "idDependente",
-        sourceKey: "id"
-      })
     }
   };
   Dependente.init({

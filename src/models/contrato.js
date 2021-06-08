@@ -11,18 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Contrato.belongsTo(models.Usuario, {
-        foreignKey: "idUsuarioCliente",
-        targetKey: "id"
-      })
-      Contrato.belongsTo(models.Usuario, {
-        foreignKey: "idDependente",
-        targetKey: "id"
-      })
-      Contrato.belongsTo(models.Usuario, {
-        foreignKey: "idUsuarioProfissional",
-        targetKey: "id"
-      })
     }
   };
   Contrato.init({

@@ -11,29 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Usuario.hasMany(models.Contrato, {
-        foreignKey: "idUsuarioCliente",
-        sourceKey: "id"
-      })
-      Usuario.hasMany(models.Contrato, {
-        foreignKey: "idUsuarioProfissional",
-        sourceKey: "id"
-      })
-      Usuario.hasMany(models.Mensagem, {
-        foreignKey: "idUsuarioOrigem",
-        sourceKey:  "id"
-      })
-      Usuario.hasMany(models.Mensagem, {
-        foreignKey: "idUsuarioDestino",
-        sourceKey:  "id"
-      })
-      Usuario.hasMany(models.Dependente, {
-        foreignKey: "idUsuario",
-        sourceKey: "id"
-      })
     }
   };
   Usuario.init({
+    uuid: DataTypes.UUIDV4,
     tipo: DataTypes.INTEGER,
     nome: DataTypes.STRING,
     email: DataTypes.STRING,

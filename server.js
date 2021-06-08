@@ -2,6 +2,8 @@ const express = require('express')
 
 const app = express()
 
+const jwt = require('jsonwebtoken')
+
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
@@ -11,6 +13,7 @@ const profissionalRoute = require('./src/routes/profissionalRoute')
 const dependenteRoute = require('./src/routes/dependenteRoute')
 const contratoRoute = require('./src/routes/contratoRoute')
 const mensagemRoute = require('./src/routes/mensagemRoute')
+const loginRoute = require('./src/routes/loginRoute')
 
 usuarioRoute(app)
 clienteRoute(app)
@@ -18,6 +21,7 @@ profissionalRoute(app)
 dependenteRoute(app)
 contratoRoute(app)
 mensagemRoute(app)
+loginRoute(app)
 
 const port = process.env.PORT || 3000
 app.listen(port)
