@@ -1,8 +1,9 @@
 module.exports = function (app) {
     const profissionalController = require('../controllers/profissionalController')
+    const auth = require('../middlewares/autorizeToken')
 
     app.route('/profissional')
-        .get(profissionalController.listAll)
+        .get(auth.autenticar,profissionalController.listAll)
         .post(profissionalController.createOne)
     
     app.route('/profissional/:id')

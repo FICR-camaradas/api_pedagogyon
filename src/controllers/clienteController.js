@@ -58,9 +58,6 @@ exports.updateOne = (req,res) => {
 	.catch(error => {res.send(error)})
 }
 
-exports.getNameImage = (req,res) => {
-
-}
 
 exports.deleteOne = (req,res) => {
 	Cliente.destroy({where:{id:req.params.id}})
