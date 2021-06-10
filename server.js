@@ -21,6 +21,8 @@ contratoRoute(app)
 mensagemRoute(app)
 loginRoute(app)
 
+app.use('/uploads', express.static('uploads'))
+
 const port = process.env.PORT || 3000
 app.listen(port)
 console.log('funcionando na porta ', port)

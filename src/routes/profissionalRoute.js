@@ -1,3 +1,6 @@
+const getImage = require('../middlewares/getImage')
+const multer = require('multer')
+
 module.exports = function (app) {
     const profissionalController = require('../controllers/profissionalController')
     const auth = require('../middlewares/autorizeToken')

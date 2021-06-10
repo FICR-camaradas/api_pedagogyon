@@ -14,7 +14,10 @@ exports.listOne = (req, res) => {
     .catch(error => {res.send(error)})
 }
 
-exports.createOne = (req, res) => { 
+exports.createOne = async (req, res) => { 
+    if(await Profissional.findOne({where:{email:req.body.email}})){
+        return res.status(401).send({mensagem: "Não autorizado"})
+    }
     const tipo = 2
     const {
       nome, email, imagem,
@@ -36,23 +39,27 @@ exports.createOne = (req, res) => {
         .catch(error => {res.send(error)})
     })
 }
-exports.updateOne = (req,res) => {
-  const {
-    nome, email, imagem,
-    cpf, rg, orgao_expedidor,
-    data_nasc, sexo, endereco,
-    cep, cidade, estado, telefone,
-    especializacao,observacoes
-  } = req.body
-  Profissional.update({
-    nome, email, imagem,
-    cpf, rg, orgao_expedidor,
-    data_nasc, sexo, endereco,
-    cep, cidade, estado, telefone,
-    especializacao,observacoes
-  },{where:{id:req.params.id}})
-.then(profissional => {res.send(profissional)})
-.catch(error => {res.send(error)})
+exports.updateOne = async (req,res) => {
+	if(await Profissional.findOne({where:{email:req.body.email}})){
+        return res.status(401).send({mensagem: "Não autorizado"})
+    }
+
+	const {
+		nome, email,
+		cpf, rg, orgao_expedidor,
+		data_nasc, sexo, endereco,
+		cep, cidade, estado, telefone,
+		especializacao,observacoes
+	} = req.body
+	Profissional.update({
+		nome, email,
+		cpf, rg, orgao_expedidor,
+		data_nasc, sexo, endereco,
+		cep, cidade, estado, telefone,
+		especializacao,observacoes
+	},{where:{id:req.params.id}})
+	.then(profissional => {res.send(profissional)})
+	.catch(error => {res.send(error)})
 }
 
 exports.deleteOne = (req,res) => {

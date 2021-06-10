@@ -38,7 +38,7 @@ exports.updateOne = (req, res) => {
     Dependente.update({
       nome, cpf, rg, orgao_expedidor,
       data_nasc, sexo, observacoes
-    })
+    },{where:{id:req.params.id}})
     .then(dependente => {res.send(dependente)})
     .catch(error => {res.send(error)})
 }
